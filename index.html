@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Visual Bitcoin by btcontract</title>
+    <title>Simple Bitcoin Wallet</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
@@ -15,33 +15,28 @@
   <body>
     <div class="wrapper">
       <header>
-        <strong>Visual Bitcoin Wallet</strong>
-        <p>A beautiful Bitcoin wallet with advanced security features</p>
+        <strong>Simple Bitcoin Wallet</strong>
+        <p>Bitcoin is not that complicated once you have the right tool</p>
 
-        <p class="view"><a href="https://github.com/btcontract/VisualBitcoinWallet">View the Project on GitHub <small>btcontract/VisualBitcoinWallet</small></a></p>
+        <p class="view"><a href="https://github.com/btcontract/wallet">View source on GitHub <small>btcontract/wallet</small></a></p>
+        <p><a href="https://github.com/btcontract/wallet/blob/master/app/app-release.apk">Download APK file</a> from repository</p>
+	<p><a href="https://github.com/btcontract/wallet/issues">Report an issue</a> on GitHub or <a href="mailto:anton.kumaigorodskiy@outlook.com">send an email to developer</a></p>
+	<p><a href="https://play.google.com/store/apps/details?id=com.btcontract.wallet"><img src="./en_generic_rgb_wo_45.png"></a></p>
 
-
-        <ul>
-          <li><a href="https://github.com/btcontract/VisualBitcoinWallet/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/btcontract/VisualBitcoinWallet/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/btcontract/VisualBitcoinWallet">View On <strong>GitHub</strong></a></li>
-        </ul>
       </header>
       <section>
-        <p>This is a standalone wallet for Android devices which does not depend on any centralized service and gives you full control over your money.</p>
+        <p>Simple Bitcoin is a standalone wallet for Android devices which does not depend on any centralized service and gives you full control over your precious bitcoins.</p>
 
 <ul>
+<li><p>A single-page application which allows you to store your bitcoins securely and transfer them easily.</p></li>
 <li><p>It is an <a href="https://en.bitcoin.it/wiki/Deterministic_wallet">HD wallet</a> which means your balance and full transaction history can always be restored using a single mnemonic code should anything bad happen to your device. </p></li>
-<li><p>It is intended for mobile devices, hence wallet does not store a full <a href="https://en.bitcoin.it/wiki/Block_chain">Blockchain</a> but instead acquires all the relevant data from random Bitcoin nodes using an <a href="https://en.bitcoin.it/wiki/Scalability#Simplified_payment_verification">SPV technique</a>.</p></li>
-<li><p>It utilizes a nice physical metaphor displaying your bitcoins as a bunch of actual coins that you can interact with. Coins of the same color belong to the same <a href="http://bitcoin.stackexchange.com/questions/4301/what-is-an-unspent-output">unspent output</a> and thus provide you with a deep insight into the structure of your money.</p></li>
-<li><p>Multi-send is fully supported: transfer funds to many different addresses in a single transaction and save on fees.</p></li>
+<li><p>This wallet is intended for mobile devices, hence it does not store a full <a href="https://en.bitcoin.it/wiki/Block_chain">Blockchain</a> but instead acquires all the relevant data from random Bitcoin nodes using an <a href="https://en.bitcoin.it/wiki/Scalability#Simplified_payment_verification">SPV technique</a>.</p></li>
 </ul>
 
 <h3>
 <a id="mnemonic-code" class="anchor" href="#mnemonic-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mnemonic code</h3>
 
-<p>Visual Bitcoin is an HD wallet, thus all your private keys come from a single mnemonic code which is essentially a phrase comprising of 12 random words. Whoever knows your mnemonic code also fully controls your bitcoins so it should be kept private at all times.</p>
-
+<p>Simple Bitcoin is a so called HD wallet: all Bitcoin addresses and private keys come from a single mnemonic code which is essentially a phrase comprising of 12 random words. Please remember: whoever knows your mnemonic code also fully controls your bitcoins so it should be kept private at all times.</p>
 <p><a name="mnemonic"></a> Also, <strong style="color:#FF0000">in case if you lose your device or forget your wallet password only mnemonic code can get your bitcoins back, it's that important!</strong> Ideally one of the following actions should be taken once a new wallet is created:</p>
 
 <ul>
@@ -50,26 +45,40 @@
 </ul>
 
 <h3>
-<a id="destruction-code" class="anchor" href="#destruction-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Destruction code</h3>
-
-<p>Good password protects your money from being stolen, but that's about it. In this wallet you can also set a destruction code which can help in preserving your funds even if you are forced to reveal a password. Here is how it works:</p>
-
-<ol>
-<li><p>First go to Wallet settings and set a destruction code there. Presence of a destruction code will not be indicated anywhere so you will have to remember it was set and exists.</p></li>
-<li><p>Next notice a "Lock" icon in app's task bar. Whenever you press it the wallet immediately becomes closed and locked meaning one has to enter a password to open it. <strong>The important thing is that once you have a destruction code set you can enter it there instead of password</strong>.</p></li>
-<li><p>If while trying to unlock a wallet you do enter your destruction code instead of password then your current wallet data will be silently erased and a completely new wallet with a zero balance will be created. Destruction code will become a password for that new wallet. Everything would seem like you have indeed provided a password and your wallet is empty. You will be able to restore your original wallet at a later time using your mnemonic code.</p></li>
-</ol>
+<a id="unconfirmed-transactions" class="anchor" href="#unconfirmed-transactions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unconfirmed transactions</h3>
+<p>Here's a simple heuristic: <strong>treat any unconfirmed incoming transaction as if it does not exist yet</strong>. There are a lot of technical reasons for this and 
+the rule applies to all wallets, not just to Simple Bitcoin Wallet. Just wait for at least one confirmation and you'll be fine.</p>
 
 <h3>
-<a id="bandwidth-warning" class="anchor" href="#bandwidth-warning" aria-hidden="true"><span class="octicon octicon-link"></span></a>Bandwidth warning</h3>
+<a id="transaction-fees" class="anchor" href="#transaction-fees" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transaction fees</h3>
+<p>Every transaction you send must have some fee attached to it. Fee goes not to wallet developer but to Bitcoin miners who include transactions in blocks and
+thus give them confirmations. The higher fee you choose the faster transaction will be confirmed.</p>
 
-<p>As long as wallet is running it communicates with Bitcoin network and that could be taking up to 2 megabytes per hour. This is not a problem at all for Wi-Fi networks but can be sensitive if you are on a costly cellular data plan. In a latter case make sure you do close a wallet every time after you're done working with it.</p>
+ 
+<h3>
+<a id="many-addresses" class="anchor" href="#many-addresses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Wallet addresses</h3>
+<p>Due to privacy considerations wallet has not one but many addresses. In fact, wallet's default address gets changed on every new incoming transaction. Never worry about it as all the old wallet addresses stay valid forever and you can use any of them to receive funds.</p>
 
-<p>The concept of shutting down is subtle on Android: if while inside an app you press "home" then wallet will be sent hanging in a background for an indefinite time and it will be consuming traffic there. If instead you press "back" then wallet will also be sent to background but in a couple of minutes it will really be closed.</p>
+<h3>
+<a id="lost-password" class="anchor" href="#lost-password" aria-hidden="true"><span class="octicon octicon-link"></span></a>In case you lose your password...</h3>
+
+<p>
+It's important to understand that Simple Bitcoin Wallet is not a centralized service so you can't regain access to your funds by just providing an email or something like that.
+ Here you'll need to restore a wallet using your mnemonic code and this is how to do it step by step:
+</p>
+<ol>
+<li><p>Erase all current wallet data if you know how to do that (such an option is typically available in System Settings), otherwise just reinstall an application from scratch.</p></li>
+<li><p>Open fresh application and you'll be given an option to restore your wallet instead of creating a new one, choose it and enter
+ your mnemonic code as well as new wallet password.</p></li>
+</ol>
+<p>
+Important note: restored wallet will appear empty at first and that is completely normal as it needs some time to catch up with network.
+</p>
+
       </section>
       <footer>
-        <p>This project is maintained by <a href="https://github.com/btcontract">btcontract</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+	<p>Spanish translation help by Andres Jalinton. <a href="http://micronotas.cl/Bitcoin">An article from Andres which explains Bitcoin in Spanish</a>.</p>
+        <p><small>Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
